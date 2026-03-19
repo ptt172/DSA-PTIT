@@ -1,26 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
+int n ;
+string a;
 
-int main (){
-    int t ;
-    cin >> t;
-    while (t--){
-        int n ;
-        cin >> n;
-        priority_queue<long long , vector <long long>,greater <long long >> q;
-        for (int i = 0 ; i < n ; i++){
-            long long x ;
-            cin >> x;
-            q.push(x);
-        }
-        long long ans =0 ;
-        while (q.size () > 1){
-            long long x = q.top (); q.pop();
-            long long y = q.top (); q.pop();
-            long long sum = (x  + y ) ;
-            ans = (ans + sum) ;
-            q.push(sum);
-        }
-        cout << ans << endl;
+void in (){
+    string s = a;
+    reverse(s.begin(), s.end());
+    if (s == a) { 
+    for (char i : a){
+        cout << i << " ";
     }
+    cout << endl;
+}
+}
+void ql (int i){
+    for (int j = 0 ; j <= 1 ; j++){
+        a[i] = j + '0';
+        if (i == n - 1) in ();
+        else ql (i + 1);
+    }
+}
+int main() {
+    cin >> n;
+    a.resize (n);
+    ql (0);
+    return 0;
 }
