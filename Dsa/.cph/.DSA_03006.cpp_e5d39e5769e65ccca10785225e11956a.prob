@@ -1,0 +1,1 @@
+{"name":"Local: DSA_03006","url":"e:\\c++\\Code ptit\\Dsa\\DSA_03006.cpp","tests":[{"id":1773995410543,"input":"2\n7\n1 6 3 4 5 2 7\n7\n1 6 3 4 5 7 2","output":"Yes\nNo"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\Dsa\\DSA_03006.cpp","group":"local","local":true}
