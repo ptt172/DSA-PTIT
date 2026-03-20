@@ -1,0 +1,1 @@
+{"name":"Local: DSA_P_200","url":"e:\\c++\\Code ptit\\Dsa\\DSA_P_200.cpp","tests":[{"id":1773989756079,"input":"2\n4\n5 7 1 4\n7\n123 456 100 989 444 111 90","output":"1 4 5 7\n90 100 111 123 444 456 989"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\Dsa\\DSA_P_200.cpp","group":"local","local":true}
