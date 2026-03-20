@@ -1,0 +1,1 @@
+{"name":"Local: DSA_P_011","url":"e:\\c++\\Code ptit\\Dsa\\DSA_P_011.cpp","tests":[{"id":1773987239596,"input":"5 6\n.#....\n..#...\n..#..#\n...##.\n.#....","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\Dsa\\DSA_P_011.cpp","group":"local","local":true}
