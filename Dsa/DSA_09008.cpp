@@ -7,25 +7,23 @@ int V , E ,u , v , lth ;
 vector <vector <int>> g;
 vector <bool> vs;
 // Cạnh cầu là cạnh quan trọng nhất trong việc giữ đồ thị liên thông
-// có thể thay bfs  = dfs
+//Trong đồ thị có vòng, không có cạnh cầu, vì luôn có đường đi thay thế.
 
-void dfs(int s) {
-    stack<int> st;
-    st.push(s);
-    vs[s] = 1;
-    
-    while (!st.empty()) {
-        u = st.top(); st.pop();
-        for (int v : g[u]) {
-            if (!vs[v]) {
-                vs[v] = 1;
-                st.push(u);
-                st.push(v);
-                break;
+void bfs (int bd){
+    queue <int> q;
+    q.push(bd);
+    vs[bd] = true;
+    while  (!q.empty ()){
+        u = q.front() ; q.pop ();
+        for (int j : g[u]){
+            if (!vs[j]){
+                q.push (j);
+                vs[j] = true;
             }
-        }
+        } 
     }
 }
+
 int main (){
     int t;
     cin >> t;
@@ -37,20 +35,15 @@ int main (){
         for (int i = 1 ; i<= E ;i ++){
             cin >> u >> v;
             g[u].push_back (v);
+            g[v].push_back (u);
+
         }
-        int found = 0;
         for (int i = 1; i <= V ;i ++){
-            dfs(i);
-            for (int j = 1 ; j <= V ; j++){
-            if (!vs[j]){
-                found = 1;
-                break;
+            if (!vs[i]){
+                bfs(i);
+                lth ++;
             }
         }
-        if (!found) break;
+        cout << lth << endl;
     }
-        if (!found){
-        cout << "YES" << endl;}
-        else cout << "NO" << endl;
-}
 }

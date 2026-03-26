@@ -5,6 +5,8 @@ int V , E ,u , v , x , y , lth ;
 vector <vector <int>> g;
 vector <pair <int,int>> ed;
 vector <bool> vs;
+// Cạnh cầu là cạnh quan trọng nhất trong việc giữ đồ thị liên thông
+//Trong đồ thị có vòng, không có cạnh cầu, vì luôn có đường đi thay thế.
 
 void bfs (int bd){
     queue <int> q;

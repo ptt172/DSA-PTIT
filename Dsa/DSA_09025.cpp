@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+// tham khao 
 int V , E , s , t , u , v ;
 vector <vector <int>> g;
 vector <bool> vs;
@@ -23,19 +23,19 @@ void dfs (int s){
 
 }
 
-void trace() {
+void trace() { // truy vet tu s -> t 
     if (!vs[t]) {
         cout << -1 << endl;
         return;
     }
     else{
     vector<int> path;
-    int cur = t;
-    while (cur != -1) {
-        path.push_back(cur);
-        cur = b[cur];
+    int last = t; // tu dich
+    while (last != -1) {
+        path.push_back(last); // them dinh vao duong di
+        last = b[last]; // di toi dinh cua last
     }
-    reverse(path.begin(), path.end());
+    reverse(path.begin(), path.end()); // dang tu t - > s nên đảo lại 
     for (int x : path) cout << x << " ";
     cout << endl;
 }
