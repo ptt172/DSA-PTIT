@@ -1,0 +1,1 @@
+{"name":"Local: DSA_07003_KiemTraBieuThucSoHoc","url":"e:\\c++\\Code ptit\\Dsa\\DSA_07003_KiemTraBieuThucSoHoc.cpp","tests":[{"id":1774766495921,"input":"3\n((a+b))\n(a + (b)/c)\n(a + b*(c-d))","output":"Yes\nYes\nNo\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\Dsa\\DSA_07003_KiemTraBieuThucSoHoc.cpp","group":"local","local":true}
