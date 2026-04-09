@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool ktra (string c){
-    return c == "*" || c == "/" || c == "+" || c == "-";
+bool ktra (char c){
+    return c == '*' || c == '/' || c == '+' || c == '-';
 }
 int main (){
     int t ;
@@ -12,8 +12,8 @@ int main (){
         string s;
         cin >> s;
         stack <string> v;
-        for (int i = 0 ; i <= s.size () ;i++){
-            string x = string (1 , s[i]);
+        for (int i = s.size () - 1 ; i >= 0 ;i--){
+            char x = s[i];
             if (ktra (x)){
                 string a = v.top () ;
                 v.pop ();
@@ -22,7 +22,7 @@ int main (){
                 string res = "(" + a + x + b + ")";
                 v.push (res);
             }
-            else v.push (x);
+            else v.push (string (1 , x));
         }
         cout << v.top () << endl;
     }

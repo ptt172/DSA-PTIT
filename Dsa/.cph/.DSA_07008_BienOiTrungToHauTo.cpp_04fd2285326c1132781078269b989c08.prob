@@ -1,0 +1,1 @@
+{"name":"Local: DSA_07008_BienOiTrungToHauTo","url":"e:\\c++\\Code ptit\\Dsa\\DSA_07008_BienOiTrungToHauTo.cpp","tests":[{"id":1775698502088,"input":"A+B*C","output":"ABC*+"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\Dsa\\DSA_07008_BienOiTrungToHauTo.cpp","group":"local","local":true}

@@ -1,44 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
-// tham khao 
+
 int V , E , s , t , u , v ;
 vector <vector <int>> g;
 vector <bool> vs;
 vector <int> b;
-void dfs (int s){
-    stack <int> st;
-    st.push (s);
-    while (!st.empty ()){
-        int u = st.top (); st.pop();
-        vs [u] = true;
-        if (u == t) return ;
-        for (int j : g[u]){
-            if (!vs[j]){
-                st.push (j);
-                vs[j] = true;
-                b[j] = u;
+void dfs(int s) {
+    stack<int> st;
+    st.push(s);
+    while (!st.empty()) {
+        u = st.top(); st.pop();
+        vs[u] = true;
+        if (u == t) return;
+        for (int v : g[u]) {
+            if (vs[v] == false) {
+                st.push(u);
+                st.push(v);
+                b[v] = u;
+                break;
             }
         }
     }
-
 }
 
-void trace() { // truy vet tu s -> t 
-    if (!vs[t]) {
-        cout << -1 << endl;
+void trace() {
+    if (vs[t] == false) {
+        cout << -1;
         return;
     }
-    else{
-    vector<int> path;
-    int last = t; // tu dich
+    stack<int> way;
+    int last = t;
     while (last != -1) {
-        path.push_back(last); // them dinh vao duong di
-        last = b[last]; // di toi dinh cua last
+        way.push(last);
+        last = b[way.top()];
     }
-    reverse(path.begin(), path.end()); // dang tu t - > s nên đảo lại 
-    for (int x : path) cout << x << " ";
-    cout << endl;
-}
+    while (!way.empty()) {
+        cout << way.top() << " ";
+        way.pop();
+    }
 }
 
 int main(){
@@ -46,16 +45,16 @@ int main(){
     cin >> c;
     while(c--){
         cin >> V >> E >> s >> t;
-        g.assign (V + 1 , vector <int> ());
-        vs.assign (V + 1 , 0);
-        b.assign (V+1 , -1);
+    g.clear(); g.resize(V + 1);
+    vs.clear(); vs.resize(V + 1, 0);
+    b.clear(); b.resize(V + 1, -1);
         while (E--){
             cin >> u >> v;
             g[u].push_back (v);
         }
         dfs (s);
         trace ();
-        
+        cout << endl;
 
     }
 }

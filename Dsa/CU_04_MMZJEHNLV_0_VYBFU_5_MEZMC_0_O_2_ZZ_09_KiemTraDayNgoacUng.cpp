@@ -23,7 +23,7 @@ int main (){
     while (t--){
         string s;
         cin >> s;
-        if (ktra (s)) cout << "true\n";
-        else cout << "false\n";
+        if (ktra (s)) cout << "YES\n";
+        else cout << "NO\n";
     }
 }

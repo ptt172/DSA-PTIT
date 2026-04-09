@@ -17,7 +17,7 @@ int main (){
             else {
                 if (!v.empty () && v.top () =='('){
                     v.pop ();
-                    mo --;// ghep cap va tru di '(' vì dang gap ')
+                    mo --;
                 }
                 else {
                     dong ++;
@@ -25,8 +25,8 @@ int main (){
                 }
             }
             }
-        int ans = mo /2 + dong /2; // co cap dong mo thi chi can dao nguoc 1 dau
-        ans += mo % 2 + dong % 2;// neu co 1 cap nguoc huong thi dao ca 2
+        int ans = mo /2 + dong /2; 
+        ans += mo % 2 + dong % 2;
         cout << ans << endl;
         }
 }
