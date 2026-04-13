@@ -1,0 +1,1 @@
+{"name":"Local: CK4004 - 4","url":"e:\\c++\\Code ptit\\TRR\\CK4004 - 4.4 Cây khung nhỏ nhất.cpp","tests":[{"id":1775832276764,"input":"4 1\n\n0 7 8 2\n\n7 0 1 5\n\n8 1 0 1\n\n2 5 1 0","output":"4\n2 3\n3 4\n4 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\TRR\\CK4004 - 4.4 Cây khung nhỏ nhất.cpp","group":"local","local":true}

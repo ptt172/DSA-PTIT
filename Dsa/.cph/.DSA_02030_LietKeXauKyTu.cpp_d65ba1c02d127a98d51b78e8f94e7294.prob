@@ -1,0 +1,1 @@
+{"name":"Local: DSA_02030_LietKeXauKyTu","url":"e:\\c++\\Code ptit\\Dsa\\DSA_02030_LietKeXauKyTu.cpp","tests":[{"id":1775902296870,"input":"D 2","output":"AA\n\nAB\n\nAC\n\nAD\n\nBB\n\nBC\n\nBD\n\nCC\n\nCD\n\nDD"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\Dsa\\DSA_02030_LietKeXauKyTu.cpp","group":"local","local":true}
