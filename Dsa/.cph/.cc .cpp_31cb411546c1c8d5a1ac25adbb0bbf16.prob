@@ -1,0 +1,1 @@
+{"name":"Local: cc ","url":"e:\\c++\\Code ptit\\Dsa\\cc .cpp","tests":[{"id":1776090989248,"input":"10 12\n\n1 10\n\n10 2\n\n10 3\n\n2 4\n\n4 5\n\n5 2\n\n3 6\n\n6 7\n\n7 3\n\n7 8\n\n8 9\n\n9 7","output":"4 3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\Dsa\\cc .cpp","group":"local","local":true}
