@@ -6,7 +6,7 @@ vector <int> dske [105];
 vector <int> c (105 , -1);
 int a[105][105] ={};
  
-void dijkstra (){
+void dijkstra (){ 
     queue <pair <int,int>> q;
     q.push ({s , 0});
     vector <int> dp (105 , INT_MAX);

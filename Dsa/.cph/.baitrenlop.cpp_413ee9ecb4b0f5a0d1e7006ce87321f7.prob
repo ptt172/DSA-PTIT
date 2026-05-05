@@ -1,0 +1,1 @@
+{"name":"Local: baitrenlop","url":"e:\\c++\\Code ptit\\Dsa\\baitrenlop.cpp","tests":[{"id":1777856963252,"input":"2\n7\n50 30 20 40 70 60 80\n10\n10 9 8 7 6 5 4 3 2 1","output":"50 30 20 40 70 60 80\n10 9 8 7 6 5 4 3 2 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\Dsa\\baitrenlop.cpp","group":"local","local":true}

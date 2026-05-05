@@ -1,0 +1,1 @@
+{"name":"Local: TRR4007 - 4","url":"e:\\c++\\Code ptit\\TRR\\TRR4007 - 4.7 Cây khung.cpp","tests":[{"id":1777994187875,"input":"4 6\n\n1 2 7\n\n1 3 8\n\n1 4 2\n\n2 3 1\n\n2 4 2\n\n3 4 1","output":"4\n\n2 3 1\n\n3 4 1\n\n1 4 2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\TRR\\TRR4007 - 4.7 Cây khung.cpp","group":"local","local":true}
