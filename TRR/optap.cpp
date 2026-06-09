@@ -6,35 +6,65 @@ using namespace std ;
 // tu dsk sang dsc thi dung set <vector<int>> dsc.insert (min , max) in ra cạnh
 // từ dsk sang dsc in ra ma trận thì dùng set <pair <int,int>> 
 // + = ra , - = vao , cột là ra , hàng là vào 
-int main (){
-    int t , n ;
-    cin >> t >> n ;
-    vector <vector <int>> a (n + 1 , vector <int> (n + 1 ,0));
-    map <int,int> vao , ra;
-    vector <vector <int >> dsc ;
-    for (int i =  1 ; i<= n ;i++){
-        int c ;
-        cin >> c;
-        while (c--){
-            int j;
-            cin >> j;
-            vao [j] ++ ; ra [i] ++;
-            dsc.push_back ({i , j});
+
+// mảng parent dùng để truy viết parent [105] = {0}
+
+int n , u , v;
+vector <bool> vs;
+int parent [105]= {0};
+int a[105][105] ;
+set <int> adj [105];
+void demsl (int bd , int kt){
+
+    int cnt = 0;
+    for (int i = 1 ; i<= n ;i++){
+        if (a[bd][i] == 1 && a[i][kt] == 1){
+            cnt ++;
         }
     }
-    if (t == 1) for (int i = 1; i <= n ; i++) cout << vao [i] << " " << ra [i]  << endl;
+    cout << cnt << endl;
+}
+void dfs (int s){
+    vs[s] = true;
+    for (int x : adj [s]){
+        if (!vs[x]){
+            parent [x] = s;
+            dfs (x);
+        }
+    }
+}
+void duongdi (int s , int t){
+    dfs (s);
+    if (!vs[t]){
+        cout << 0 << endl;
+    }
     else {
-        cout << n << " " << dsc.size () << endl;
-       for (int i =1 ; i<= n ;i++){
-        for (auto x : dsc){
-            int u = x[0] , v = x [1];
-            if (u == i) cout << "1 ";
-            else if (v == i) cout << "-1 ";
-            else cout << "0 ";
-
+        vector <int> path;
+        while (t!=s){
+            path.push_back (t);
+            t = parent [t];
         }
-        cout << endl;
-       }
+        path.push_back (s);
+        reverse (path.begin () , path.end());
+        for (int x : path) cout << x << " ";
     }
+}
 
+int main (){
+    int t;
+    cin >> t ;
+    cin >>  n >> u >> v;
+    vs.assign (n + 5 , false);
+    for (int i = 1; i<= n ; i++){
+        for (int j = 1 ; j<= n ; j++){
+            cin >> a[i][j];
+            if (a[i][j]){
+                adj[i].insert (j);
+            }
+        }
+    }
+    if (t == 1) demsl (u , v);
+    else {
+        duongdi (u , v);
+    }
 }
