@@ -2,8 +2,8 @@
 
 using namespace std;
 int main (){
-   freopen("DT.INP","r",stdin);
-   freopen("DT.OUT","w",stdout);
+   
+    
    int t , n;
    cin >> t >> n;
    map <int, int > vao , ra; // dùng vector cũng được vd : vector <int> vao ( n + 1 , 0);

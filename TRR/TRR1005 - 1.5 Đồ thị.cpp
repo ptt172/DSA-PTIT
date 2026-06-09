@@ -7,6 +7,7 @@ int main() {
     int t , n , m;
     cin >> t >> n >> m;
     vector <int> cnt (n + 1 , 0);
+    
     vector <set<int>> dske (n + 1);
     for (int i = 1 ; i<= m ; i++){
         int x , y;

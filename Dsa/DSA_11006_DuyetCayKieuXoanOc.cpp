@@ -18,7 +18,7 @@ void insert (tree *root , int n1 , int n2 , char c){
         insert (root -> left , n1 , n2 , c);
         insert (root -> right , n1 , n2 , c);
     }
-}
+}// o (n ^ 2)
 void xoanoc (tree * root){
     if (root == NULL) return ;
     stack <tree *> s1 , s2;

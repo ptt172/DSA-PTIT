@@ -34,16 +34,17 @@ int main (){
         vector <string> a (n );
         for (int i = 0 ; i<n ; i++) cin >> a[i];
         stack <long long > st; 
-        for (int i = 0 ; i < n ; i ++){
-            if (so (a[i])) {
-                st.push (stoll (a[i]));
-            }
-            else {
-                long long y = st.top(); st.pop();
-                long long x = st.top(); st.pop();
-                st.push (calc (x , y , a[i]));
-            }
+      for (int i = n - 1; i >= 0; i--) {
+        if (so(a[i])) {
+            st.push(stoll(a[i]));
+        } else {
+            long long x = st.top(); st.pop();
+            long long y = st.top(); st.pop();
+            st.push(calc(x, y, a[i]));
         }
-    cout << st.top () << endl;
+    }
+    if (!st.empty()) {
+    cout << st.top();
+}
 }
 }

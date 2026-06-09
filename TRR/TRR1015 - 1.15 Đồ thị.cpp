@@ -2,8 +2,8 @@
 
 using namespace std;
 int main (){
-   freopen("DT.INP","r",stdin);
-   freopen("DT.OUT","w",stdout);
+   
+    
    int t , n , m;
    cin >> t >> n >> m;
    vector <int> vao (n + 1 , 0 ) , ra ( n + 1 ,0);

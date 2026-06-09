@@ -2,8 +2,9 @@
 
 using namespace std;
 int main (){
-   freopen("DT.INP","r",stdin);
-   freopen("DT.OUT","w",stdout);
+   
+    
+    
    int t, n , m;
    cin >> t >> n >> m;
    map <int, int> vao , ra;
