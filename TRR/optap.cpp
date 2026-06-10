@@ -9,62 +9,47 @@ using namespace std ;
 
 // mảng parent dùng để truy viết parent [105] = {0}
 
-int n , u , v;
-vector <bool> vs;
-int parent [105]= {0};
-int a[105][105] ;
-set <int> adj [105];
-void demsl (int bd , int kt){
-
+int n  ;
+int a[105][105];
+bool vs [105];
+set <int> adj;
+void dfs (int u , int ban){
+   vs[u] = true; 
+   for (int x = 1 ; x <= n ; x++){
+        if (!vs[x] && ban != x && a[u][x]){
+            dfs (x , ban);
+        }
+   }
+}
+int demtplt (int ban){
+    memset (vs, false , sizeof (vs));
     int cnt = 0;
-    for (int i = 1 ; i<= n ;i++){
-        if (a[bd][i] == 1 && a[i][kt] == 1){
+    for (int i =1;  i<= n ; i++){
+        if (i != ban && !vs[i]){
             cnt ++;
+            dfs (i , ban);
         }
     }
-    cout << cnt << endl;
+    return cnt;
 }
-void dfs (int s){
-    vs[s] = true;
-    for (int x : adj [s]){
-        if (!vs[x]){
-            parent [x] = s;
-            dfs (x);
-        }
-    }
-}
-void duongdi (int s , int t){
-    dfs (s);
-    if (!vs[t]){
-        cout << 0 << endl;
-    }
-    else {
-        vector <int> path;
-        while (t!=s){
-            path.push_back (t);
-            t = parent [t];
-        }
-        path.push_back (s);
-        reverse (path.begin () , path.end());
-        for (int x : path) cout << x << " ";
-    }
-}
-
 int main (){
-    int t;
-    cin >> t ;
-    cin >>  n >> u >> v;
-    vs.assign (n + 5 , false);
-    for (int i = 1; i<= n ; i++){
-        for (int j = 1 ; j<= n ; j++){
+    cin >> n;
+    for (int i = 1; i <= n ; i++){
+        for (int j = 1; j <= n ; j++){
             cin >> a[i][j];
-            if (a[i][j]){
-                adj[i].insert (j);
-            }
         }
     }
-    if (t == 1) demsl (u , v);
-    else {
-        duongdi (u , v);
+    vector <int> res;
+    int bandau = demtplt (0);
+    for (int i = 1; i<= n ;i++){
+        int saukhixoa = demtplt (i);
+        if (saukhixoa > bandau) {
+            res.push_back(i);
+        }
     }
+    cout << res.size () << endl;
+    for (auto x : res ){
+        cout << x << " ";
+    }
+
 }
