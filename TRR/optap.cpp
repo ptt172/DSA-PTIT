@@ -9,47 +9,60 @@ using namespace std ;
 
 // mảng parent dùng để truy viết parent [105] = {0}
 
-int n  ;
-int a[105][105];
-bool vs [105];
-set <int> adj;
-void dfs (int u , int ban){
-   vs[u] = true; 
-   for (int x = 1 ; x <= n ; x++){
-        if (!vs[x] && ban != x && a[u][x]){
-            dfs (x , ban);
+int n , m , d ;
+int parent [105];
+struct ed {
+    int u , v , w;
+};
+vector <ed> T, V;
+int cmp (ed a , ed b){
+    if (a.w == b.w) {
+        if (a.u == b.u){
+            return a.v < b.v;
         }
-   }
+        return a.u < b.u;
+    }
+    return a.w < b.w;
 }
-int demtplt (int ban){
-    memset (vs, false , sizeof (vs));
-    int cnt = 0;
-    for (int i =1;  i<= n ; i++){
-        if (i != ban && !vs[i]){
-            cnt ++;
-            dfs (i , ban);
-        }
-    }
-    return cnt;
-}
-int main (){
-    cin >> n;
-    for (int i = 1; i <= n ; i++){
-        for (int j = 1; j <= n ; j++){
-            cin >> a[i][j];
-        }
-    }
-    vector <int> res;
-    int bandau = demtplt (0);
-    for (int i = 1; i<= n ;i++){
-        int saukhixoa = demtplt (i);
-        if (saukhixoa > bandau) {
-            res.push_back(i);
-        }
-    }
-    cout << res.size () << endl;
-    for (auto x : res ){
-        cout << x << " ";
-    }
+int Find (int u ){
+    if (parent [u] == u) return u;
+    return parent [u] = Find (parent [u]);
 
 }
+int Union (int u , int v){
+    u = Find (u);
+    v = Find (v);
+    if (u == v) return false;
+    parent [v] = u;
+    return  true;
+}
+void kruskal (){
+    d =  0;
+    T.clear ();
+    sort (V.begin () , V.end() , cmp);
+    for (int i = 1; i<= n ;i++){
+        parent[i] = i;
+    }
+    for (ed e : V){
+        if (Union (e.u , e.v)){
+            d+= e.w;
+            T.push_back (e);
+            if (T.size () == n-1) break;
+        }
+    }
+}
+int main (){
+    cin >> n >> m;
+    V.clear () ; T.clear();
+    for (int i = 0 ; i< m ; i++){
+        ed e;
+        cin >>e .u >> e.v >> e.w ;
+        V.push_back (e);
+    }
+    kruskal ();
+    cout <<d << endl;
+    for (int i = 0 ; i< T.size () ; i++){
+       cout << T[i].u << " " << T[i].v <<  " " << T[i].w << endl;
+    }
+}
+
