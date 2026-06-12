@@ -24,9 +24,6 @@ void Hamilton(int i) {
                     for(int i = 1; i <= V; i++) cout << X[i] << " ";
                     cout << u << endl;
                 }
-
-
-                
             }
             else if(i <= V) Hamilton(i + 1);
 
@@ -36,8 +33,7 @@ void Hamilton(int i) {
 }
 
 int main() {
-    freopen("CT.INP", "r", stdin);
-	freopen("CT.OUT", "w", stdout);
+    
     cin >> V >> u;
     
     for(int i = 1; i <= V; i++) {
