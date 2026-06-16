@@ -1,1 +1,1 @@
-{"name":"Local: optap","url":"e:\\c++\\Code ptit\\Dsa\\optap.cpp","tests":[{"id":1781579928197,"input":"3","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\Dsa\\optap.cpp","group":"local","local":true}
+{"name":"Local: optap","url":"e:\\c++\\Code ptit\\Dsa\\optap.cpp","tests":[{"id":1781579928197,"input":"2\n\n\n\t\t\t5  3\n\n\n\t\t\t1  4  5\n\n\n\t\t\t5  3\n\n\n\t\t\t3  4  5","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\c++\\Code ptit\\Dsa\\optap.cpp","group":"local","local":true}
