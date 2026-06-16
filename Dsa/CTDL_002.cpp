@@ -1,34 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n , k , ans;
-vector <int> a , b;
+
+int n , k;
+int a[105] , x[105];
+int cnt =0;
 void in (){
-    int sum = 0 ;
-    for (int i = 0  ; i< n ; i++){
-        sum += a[i] * b[i];
+    int sum = 0;
+    for (int i = 1; i<= n ; i++){
+        if (a[i] == 1){
+            sum += x[i];
+        }
     }
     if (sum == k) {
-        ans ++ ;
-        for (int i = 0 ;  i <n ; i++){
-            if (b[i]) cout << a[i] << " ";
+        cnt ++;
+        for (int i = 1 ; i<= n ;i++){
+            if (a[i] == 1) cout << x[i] << " ";
         }
         cout << endl;
     }
 }
-void ql (int i){
-    for (int j = 0 ; j <= 1 ; j++){
-        b[i] = j;
-        if (i == n -1) in ();
-        else ql (i + 1);
+void sinh (int i){
+    for (int j = 0 ; j<= 1 ;j ++){
+        a[i] = j;
+        if (i == n){
+            in ();
+        }
+        else sinh (i + 1);
     }
 }
-int main() {
+int main () {
     cin >> n >> k;
-    a.resize (n);
-    b.resize (n);
-    for (int &i : a) cin >> i;
-    ql (0);
-    cout << ans << endl;
-    return 0;
+    for (int i = 1; i<= n ;i++){
+        cin >> x[i];
+    }
+    sinh (1);
+    cout << cnt << endl;
 }
