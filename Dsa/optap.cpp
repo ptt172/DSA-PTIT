@@ -1,32 +1,35 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 
-int n , k;
+int n , sum = 0;
 int a[105];
-vector <string> v;
-void in (){
-    for (int i = 1; i<= k ; i++){
-        cout << v[a[i]-1] << " ";
+bool stop;
+void ql (int i , int s){
+    if (i == n || stop || s == sum /2){
+        if (s == sum / 2) stop = true;
+        return;
     }
-    cout << endl;
-}
-void ql (int i){
-    for (int j = a[i - 1] + 1 ; j <= (int)v.size () - k + i ; j++){
-        a[i] = j;
-        if (i == k) in ();
-        else ql (i + 1);
+    if (s + a[i] <= sum / 2) {
+        ql (i + 1 ,s + a[i]);
     }
+    ql (i + 1 ,s);
+
 }
 int main (){
-    cin >> n >> k;
-    set <string> se;
-    string s;
-    for (int i = 0 ; i< n ; i++){
-        cin >> s;
-        se.insert (s);
+    int t;
+    cin >> t;
+    while (t--){
+        cin >> n;
+        stop = false;
+        for (int i = 1; i<= n ;i++){
+            cin >> a[i];
+            sum += a[i];
+        }
+        if (sum % 2 ==0){
+            ql (0 ,0);
+        }
+        if (stop) cout << "YES\n";
+        else cout << "NO\n";
     }
-    for (string x : se){
-        v.push_back (x);
-    }
-    ql (1);
 }
