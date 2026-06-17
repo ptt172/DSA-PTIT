@@ -1,35 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
+int n , k;
+int a[105];
+vector <string> v;
+void in (){
+    for (int i = 1; i<= k ; i++){
+        cout << v[a[i]-1] << " ";
+    }
+    cout << endl;
+}
+void ql (int i){
+    for (int j = a[i - 1] + 1 ; j <= (int)v.size () - k + i ; j++){
+        a[i] = j;
+        if (i == k) in ();
+        else ql (i + 1);
+    }
+}
 int main (){
-    int t , n , k;
-    cin >> t;
-    int a[105];
-    map <int,int> mp;
-    while (t--){
-        cin >> n >> k;
-        for (int i = 1; i<= n ;i++){
-            cin >> a[i];
-            mp[a[i]] ++;
+    cin >> n >> k;
+    set <string> se;
+    string s;
+    for (int i = 0 ; i< n ; i++){
+        cin >> s;
+        se.insert (s);
     }
-        int i = k;
-        while (i >= 1 && a[i] == n- k  + i) i --;
-        if (i == 0) {
-            cout << k;
-            return 0 ;
-        }
-        else {
-            a[i] ++;
-            while (i < k ){
-                a[i+1] = a[i] + 1;
-                i ++;
-            } 
-        }
-        int ans = 0;
-        for (int i = 1; i<= k ;i++){
-            if (!mp[a[i]]) ans ++;
-        }
-        cout << ans << endl;
+    for (string x : se){
+        v.push_back (x);
     }
+    ql (1);
 }
