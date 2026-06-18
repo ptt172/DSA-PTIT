@@ -1,35 +1,52 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 
-int n , sum = 0;
-int a[105];
-bool stop;
-void ql (int i , int s){
-    if (i == n || stop || s == sum /2){
-        if (s == sum / 2) stop = true;
+int t, n, x;
+vector<int> a, cur;
+vector<vector<int>> res;
+
+void ql(int i, int sum) {
+    if (sum == x) {
+        res.push_back(cur);
         return;
     }
-    if (s + a[i] <= sum / 2) {
-        ql (i + 1 ,s + a[i]);
+    if (sum > x) return;
+    for (int j = i; j < n; j++) {
+        cur.push_back(a[j]);
+        ql(j, sum + a[j]);
+        cur.pop_back();
     }
-    ql (i + 1 ,s);
-
 }
-int main (){
-    int t;
+
+int main() {
     cin >> t;
-    while (t--){
-        cin >> n;
-        stop = false;
-        for (int i = 1; i<= n ;i++){
-            cin >> a[i];
-            sum += a[i];
+
+    while (t--) {
+        cin >> n >> x;
+
+        a.resize(n);
+        for (int i = 0; i < n; i++) cin >> a[i];
+
+        sort(a.begin(), a.end());
+
+        cur.clear();
+        res.clear();
+
+        ql(0, 0);
+
+        if (res.empty()) {
+            cout << -1 << '\n';
+        } else {
+            for (auto v : res) {
+                cout << "[";
+                for (int i = 0; i < v.size(); i++) {
+                    cout << v[i];
+                    if (i != v.size() - 1) cout << " ";
+                }
+                cout << "] ";
+            } 
+            cout << endl;
+            cout << endl;
         }
-        if (sum % 2 ==0){
-            ql (0 ,0);
-        }
-        if (stop) cout << "YES\n";
-        else cout << "NO\n";
     }
 }
