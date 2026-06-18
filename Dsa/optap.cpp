@@ -1,52 +1,61 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int t, n, x;
-vector<int> a, cur;
-vector<vector<int>> res;
+int n ;
+struct tree {
+    int val ;
+    tree *left , *right ;
+};
 
-void ql(int i, int sum) {
-    if (sum == x) {
-        res.push_back(cur);
-        return;
-    }
-    if (sum > x) return;
-    for (int j = i; j < n; j++) {
-        cur.push_back(a[j]);
-        ql(j, sum + a[j]);
-        cur.pop_back();
-    }
+tree *newnode (int x){
+    tree *tmp = new tree ;
+    tmp -> val = x;
+    tmp -> left = tmp -> right = NULL;
+    return tmp;
 }
 
-int main() {
-    cin >> t;
-
-    while (t--) {
-        cin >> n >> x;
-
-        a.resize(n);
-        for (int i = 0; i < n; i++) cin >> a[i];
-
-        sort(a.begin(), a.end());
-
-        cur.clear();
-        res.clear();
-
-        ql(0, 0);
-
-        if (res.empty()) {
-            cout << -1 << '\n';
-        } else {
-            for (auto v : res) {
-                cout << "[";
-                for (int i = 0; i < v.size(); i++) {
-                    cout << v[i];
-                    if (i != v.size() - 1) cout << " ";
-                }
-                cout << "] ";
-            } 
-            cout << endl;
-            cout << endl;
+tree *build (vector <int> ino , vector <int> level){
+    if (ino.size () == 0) return NULL;
+    tree *root = newnode (level [0]);
+    vector <int> trai , phai , trail , phail;
+    int pos = 0;
+    while (ino[pos] != root -> val){
+        pos ++;
+    }
+    for (int i = 0 ; i< pos ; i++){
+        trai.push_back (ino[i]);
+    }
+    for (int i = pos + 1 ; i < ino.size () ; i++){
+        phai.push_back (ino[i]);
+    }
+    for (int x : level){
+        if (x == root -> val) continue;
+        if (find (trai.begin () , trai.end () , x) != trai.end()){
+            trail.push_back (x);
         }
+        else phail.push_back (x);
+    }
+    root -> left = build (trai , trail);
+    root -> right = build (phai , phail);
+    return root;
+}
+void inpos (tree *root){
+    if (root == NULL) return;
+    inpos (root -> left);
+    inpos (root -> right);
+    cout << root -> val << " ";
+}
+int main (){
+    int t;
+    cin >> t;
+    while (t--){
+        cin >> n;
+        vector <int> ino (n) , level (n);
+        for (int i = 0 ; i< n ;i++) cin >> ino [i];
+        for (int i = 0 ; i< n ; i++) cin >> level [i];
+        tree *root = build (ino , level);
+        inpos (root);
+        cout << endl;
     }
 }
+
