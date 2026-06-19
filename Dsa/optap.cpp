@@ -2,48 +2,45 @@
 using namespace std;
 
 
-vector<int> a[1005];
-int vs[1005];
-bool dfs(int u){
-    vs[u] = 1; 
-    for(int v : a[u]){
-        if(vs[v] == 1)
-            return true; 
-        if(vs[v] == 0){
-            if(dfs(v))
-                return true;
-        }
+int T ,V , E , u , v;
+vector <int> a[1005];
+bool vs[1005];
 
+bool dfs (int u , int parent){
+    vs[u] = true;;
+    for (int v : a[u]){
+        if (!vs[v]){
+            if (dfs (v , u)){
+                return true;
+            }
+        }
+        else if (v != parent) return true;
     }
-    vs[u] = 2; 
     return false;
 }
 
-int main(){
-    int T, V, E, u, v;
+int main (){
     cin >> T;
-    while(T--){
+    while (T--){
         cin >> V >> E;
-        for(int i = 1; i <= V; i++){
-            a[i].clear();
-            vs[i] = 0;
+        for (int i = 1; i<= V;  i++) {
+            a[i].clear ();
+            vs[i] = false;
         }
-        for(int i = 0; i < E; i++){
+        for (int i = 0 ; i < E ; i++){
             cin >> u >> v;
-         a[u].push_back(v);
+            a[u].push_back (v);
+            a[v].push_back(u);
         }
         bool ok = false;
-        for(int i = 1; i <= V; i++){
-            if(!vs[i]){
-                if(dfs(i)){
+        for (int i = 1; i<= V ; i++){
+            if (!vs[i]){
+                if (dfs (i , -1)){
                     ok = true;
-                    break;
                 }
             }
         }
-        if(ok)
-            cout << "YES\n";
-        else
-            cout << "NO\n";
+        if (ok) cout << "YES\n" ;
+        else cout << "NO\n" ;
     }
 }
